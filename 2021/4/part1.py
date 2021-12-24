@@ -2,13 +2,15 @@ def part1(filename):
 	file = open(filename, 'r')
 	lines = file.read().splitlines()
 	sequence, boards = parse_input(lines)
+	board, seq = get_first_bingo(boards, sequence)
 
-	for i in range(5, len(sequence)):
-		for b in boards:
-			check_board(b, sequence[0:i])
+	flattened = [it for row in board for it in row]
+	filtered = [num for num in flattened if num not in seq]
+
+	return sum(filtered) * seq[-1]
 
 def parse_input(data):
-	sequence = data[0].split(',')
+	sequence = [int(i) for i in data[0].split(',')]
 	boards = []
 	b = []
 
@@ -22,26 +24,36 @@ def parse_input(data):
 
 	return sequence, boards
 
-def check_board(board, seq):
-	for row in board:
+def check_board(brd, seq):
+	for row in brd:
 		bingo = True
 		for num in row:
 			if num not in seq:
 				bingo = False
 				break
-		if bingo:
-			return board
 
-	for col in range(len(board[0])):
+		if bingo:
+			return True
+
+	for col in range(len(brd[0])):
 		bingo = True
-		for row in board:
+		for row in brd:
 			if row[col] not in seq:
 				bingo = False
 				break
 		if bingo:
-			return board
+			return True
 
-	return None
+	return False
+
+def get_first_bingo(boards, sequence):
+	for i in range(5, len(sequence)):
+		for brd in boards:
+			seq = sequence[0:i]
+			bingo = check_board(brd, seq)
+
+			if bingo:
+				return brd, seq
 
 if __name__ == '__main__':
 	result = part1('input.txt')
