@@ -1,8 +1,8 @@
-def part1(filename):
+def part2(filename):
 	file = open(filename, 'r')
 	lines = file.read().splitlines()
 	sequence, boards = parse_input(lines)
-	board, seq = get_first_bingo(boards, sequence)
+	board, seq = get_last_bingo(boards, sequence)
 
 	flattened = [it for row in board for it in row]
 	filtered = [num for num in flattened if num not in seq]
@@ -46,16 +46,21 @@ def check_board(brd, seq):
 
 	return False
 
-def get_first_bingo(boards, sequence):
+def get_last_bingo(boards, sequence):
+	bingos = []
 	for i in range(5, len(sequence)):
-		for brd in boards:
+		for j in [k for k in range(len(boards)) if k not in bingos]:
 			seq = sequence[0:i]
-			bingo = check_board(brd, seq)
+			bingo = check_board(boards[j], seq)
 
 			if bingo:
-				return brd, seq
+				if len(boards) - len(bingos) > 1:
+					bingos.append(j)
+				else:
+					return boards[j], seq
+
 	return [], []
 
 if __name__ == '__main__':
-	result = part1('input.txt')
+	result = part2('input.txt')
 	print(result)
