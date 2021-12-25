@@ -1,6 +1,6 @@
 def part2(filename):
-	file = open(filename, 'r')
-	lines = file.read().splitlines()
+	with open(filename, 'r') as file:
+		lines = file.read().splitlines()
 
 	ox = bin_to_dec(filter_data(lines, 0, True))
 	co = bin_to_dec(filter_data(lines, 0, False))

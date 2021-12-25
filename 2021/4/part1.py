@@ -1,6 +1,7 @@
 def part1(filename):
-	file = open(filename, 'r')
-	lines = file.read().splitlines()
+	with open(filename, 'r') as file:
+		lines = file.read().splitlines()
+
 	sequence, boards = parse_input(lines)
 	board, seq = get_first_bingo(boards, sequence)
 

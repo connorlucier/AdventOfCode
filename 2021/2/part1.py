@@ -1,6 +1,6 @@
 def part1(filename):
-	file = open(filename, 'r')
-	lines = file.readlines()
+	with open(filename, 'r') as file:
+		lines = file.readlines()
 
 	x = 0
 	y = 0

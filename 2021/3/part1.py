@@ -1,6 +1,7 @@
 def part1(filename):
-	file = open(filename, 'r')
-	lines = file.read().splitlines()
+	with open(filename, 'r') as file:
+		lines = file.read().splitlines()
+
 	max_len = max([len(l) for l in lines])
 	bits = [0] * max_len
 
