@@ -1,15 +1,14 @@
 from point import point
 from line import line
 
-def part1(filename):
+def part2(filename):
 	with open(filename, 'r') as file:
 		raw = file.read().splitlines()
 
 	lines = parse_input(raw)
-	filtered = [l for l in lines if l.is_vertical() or l.is_horizontal()]
-	grid = get_grid(filtered)
+	grid = get_grid(lines)
 
-	for l in filtered:
+	for l in lines:
 		for pt in l.get_points():
 			grid[pt.y][pt.x] += 1
 
@@ -43,5 +42,5 @@ def get_grid(data):
 	return result
 
 if __name__ == '__main__':
-	result = part1('input.txt')
+	result = part2('input.txt')
 	print(result)
