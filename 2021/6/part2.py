@@ -15,10 +15,7 @@ def calc_growth(state, days):
 
 	next_state = [0] * 9
 
-	vals = list(range(9))
-	vals.reverse()
-
-	for i in vals:
+	for i in [8 - i for i in range(9)]:
 		if i == 0:
 			next_state[8] = state[i]
 			next_state[6] += state[i]
