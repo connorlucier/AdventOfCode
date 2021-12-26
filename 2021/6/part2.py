@@ -10,19 +10,20 @@ def part2(filename, days):
 	return calc_growth(init_state, days)
 
 def calc_growth(state, days):
-	if days <= 0:
-		return sum(state)
+	while days > 0:
+		next_state = [0] * 9
 
-	next_state = [0] * 9
+		for i in range(9):
+			if i == 0:
+				next_state[8] = state[i]
+				next_state[6] += state[i]
+			else:
+				next_state[i - 1] += state[i]
 
-	for i in [8 - i for i in range(9)]:
-		if i == 0:
-			next_state[8] = state[i]
-			next_state[6] += state[i]
-		else:
-			next_state[i - 1] = state[i]
+		state = next_state
+		days -= 1
 
-	return calc_growth(next_state, days - 1)
+	return sum(state)
 
 if __name__ == '__main__':
 	result = part2('input.txt', 256)
