@@ -20,8 +20,8 @@ def parse_input(data):
 			if b:
 				boards.append(b)
 				b = []
-			continue
-		b.append([int(i) for i in row.split()])
+		else:
+			b.append([int(i) for i in row.split()])
 
 	return sequence, boards
 
