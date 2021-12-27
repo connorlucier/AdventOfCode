@@ -1,15 +1,12 @@
 def part2(filename):
 	with open(filename, 'r') as file:
-		lines = file.readlines()
+		data = [(l.split()[0], int(l.split()[1])) for l in file.read().splitlines()]
 
 	a = 0
 	x = 0
 	y = 0
 
-	for l in lines:
-		(direction, _) = l.split(' ')
-		value = int(_)
-
+	for direction, value in data:
 		if direction == 'up':
 			a -= value
 		elif direction == 'down':
