@@ -37,7 +37,7 @@ def flash_neighbors(pts, state):
 				if state[i][j] == 0:
 					new_flash_pts.append((i,j))
 
-	flash_neighbors(list(filter(lambda p: p not in pts, new_flash_pts)), state)
+	flash_neighbors(new_flash_pts, state)
 
 def get_neighbors(data, pt):
 	i, j = pt
