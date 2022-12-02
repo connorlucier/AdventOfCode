@@ -2,7 +2,6 @@ package main
 
 import (
 	"bufio"
-	"errors"
 	"fmt"
 	"os"
 	"strconv"
@@ -38,7 +37,7 @@ func part2() {
 
 func minimum(arr []int) (int, int) {
 	if len(arr) == 0 {
-		panic(errors.New("array length must be greater than zero"))
+		panic("array length must be greater than zero")
 	}
 
 	min := arr[0]
