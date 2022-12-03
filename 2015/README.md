@@ -4,7 +4,7 @@ Started this in my downtime during 2022 AoC for fun.
 
 ## Language Selection
 
-Opted for C++ to grease the wheels a bit. Haven't written much C++ since college but want to keep things fresh. Also wanted to play around with shell and makefiles since that's always a doozy.
+Opted for C++ since I haven't written much C++ since college but want to grease those wheels a bit. Also wanted to play around with shell and makefiles since that's always a doozy.
 
 ## Build and Run
 
