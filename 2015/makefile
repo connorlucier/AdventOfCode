@@ -1,5 +1,5 @@
 default:
-	g++ -o day$(day).o $(day)/*.cpp
+	g++ -o day$(day).o $(day)/*.cpp -std=c++11
 run:
 	@make day=$(day)
 	@./day$(day).o $(day)
