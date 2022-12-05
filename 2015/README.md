@@ -13,9 +13,14 @@ The `makefile` in this directory has several commands:
 - `make` - build code for a single day
 - `make run` - build and run code for a single day
 - `make all` - build code for all days (multiple executables)
+- `make new` - create folder + files for a new day
 - `make clean` - remove all executables
 
-Both `make` and `make run` require you to specify which day to build and/or run. For example:
+The `make`, `make run` and `make new` commands require you to specify a `day` parameter. For example:
 
 - `make day=01` will build the `01/` directory
 - `make run day=10` will build and run the `10/` directory
+- `make new day=26` will create a new directory called `26/` with the following files:
+    - `main.cpp`
+    - `part1.h`
+    - `part2.h`
