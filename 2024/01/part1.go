@@ -10,7 +10,7 @@ func part1(l []int, r []int) int {
 	slices.Sort(r)
 
 	result := 0
-	for i, _ := range l {
+	for i := range l {
 		result += int(math.Abs(float64(l[i] - r[i])))
 	}
 
