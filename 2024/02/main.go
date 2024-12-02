@@ -38,7 +38,21 @@ func parseInput() [][]int {
 	return result
 }
 
-func validate(prev int, val int, dir string) (bool, string) {
+func isRowSafe(row []int) bool {
+	isSafe := true
+	dir := None
+	prev := row[0]
+	for _, val := range row[1:] {
+		isSafe, dir = isValueSafe(prev, val, dir)
+		if !isSafe {
+			break
+		}
+		prev = val
+	}
+	return isSafe
+}
+
+func isValueSafe(prev int, val int, dir string) (bool, string) {
 	if prev == val {
 		return false, dir
 	}

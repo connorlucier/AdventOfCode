@@ -3,18 +3,23 @@ package main
 func part2(values [][]int) int {
 	result := 0
 	for _, row := range values {
-		variants := [][]int{}
-		variants = append(variants, row)
-		for i := range row {
-			v := []int{}
-			v = append(v, row[:i]...)
-			v = append(v, row[i+1:]...)
-			variants = append(variants, v)
-		}
-		if part1(variants) > 0 {
-			result++
+		variants := getVariants(row)
+		for _, v := range variants {
+			if isRowSafe(v) {
+				result++
+				break
+			}
 		}
 	}
+	return result
+}
 
+func getVariants(values []int) [][]int {
+	result := append([][]int{}, values)
+	for i := range values {
+		v := append([]int{}, values[:i]...)
+		v = append(v, values[i+1:]...)
+		result = append(result, v)
+	}
 	return result
 }
