@@ -1,3 +1,3 @@
-module connorlucier/advent-of-code/2022/02
+module connorlucier/adventofcode/2022/02
 
 go 1.19
