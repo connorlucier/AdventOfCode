@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"slices"
 	"strconv"
 	"strings"
 )
@@ -49,4 +50,31 @@ func parseInput() ([][]int, map[int][]int) {
 		}
 	}
 	return updates, rules
+}
+
+func validateList(list []int, rules map[int][]int) (bool, []int) {
+	isValid := true
+	sortFn := func(a int, b int) int {
+		if rules[a] != nil && slices.Contains(rules[a], b) {
+			return -1
+		} else if rules[b] != nil && slices.Contains(rules[b], a) {
+			return 1
+		}
+		return 0
+	}
+	for i, v := range slices.Backward(list) {
+		if rules[v] != nil {
+			for _, u := range list[:i] {
+				if slices.Contains(rules[v], u) {
+					isValid = false
+					break
+				}
+			}
+		}
+	}
+	sorted := make([]int, len(list))
+	copy(sorted, list)
+	slices.SortFunc(sorted, sortFn)
+
+	return isValid, sorted
 }
