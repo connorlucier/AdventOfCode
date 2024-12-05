@@ -3,7 +3,7 @@ package main
 func part2(grid [][]rune, aLocs []Coord) int {
 	result := 0
 	for _, coord := range aLocs {
-		x := getX(&grid, coord.r, coord.c)
+		x := getX(grid, coord.r, coord.c)
 		if x.isXmas() {
 			result++
 		}
@@ -11,15 +11,15 @@ func part2(grid [][]rune, aLocs []Coord) int {
 	return result
 }
 
-func getX(grid *[][]rune, r int, c int) X {
-	if r < 1 || r >= len(*grid)-1 || c < 1 || c >= len((*grid)[0])-1 {
+func getX(grid [][]rune, r int, c int) X {
+	if r < 1 || r >= len(grid)-1 || c < 1 || c >= len(grid[0])-1 {
 		return X{}
 	}
 	return X{
-		upL:   (*grid)[r-1][c-1],
-		upR:   (*grid)[r-1][c+1],
-		downL: (*grid)[r+1][c-1],
-		downR: (*grid)[r+1][c+1],
+		upL:   grid[r-1][c-1],
+		upR:   grid[r-1][c+1],
+		downL: grid[r+1][c-1],
+		downR: grid[r+1][c+1],
 	}
 }
 

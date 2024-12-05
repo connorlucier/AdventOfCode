@@ -4,7 +4,7 @@ func part1(grid [][]rune, xLocs []Coord) int {
 	result := 0
 	target := "XMAS"
 	for _, coord := range xLocs {
-		strs := getStrings(&grid, coord.r, coord.c, len(target))
+		strs := getStrings(grid, coord.r, coord.c, len(target))
 		for _, s := range strs {
 			if s == target {
 				result++
@@ -14,9 +14,9 @@ func part1(grid [][]rune, xLocs []Coord) int {
 	return result
 }
 
-func getStrings(grid *[][]rune, r int, c int, length int) []string {
-	height := len(*grid)
-	width := len((*grid)[0])
+func getStrings(grid [][]rune, r int, c int, length int) []string {
+	height := len(grid)
+	width := len(grid[0])
 	result := []string{}
 
 	// up
@@ -55,7 +55,7 @@ func getStrings(grid *[][]rune, r int, c int, length int) []string {
 	return result
 }
 
-func getString(grid *[][]rune, startR int, endR int, startC int, endC int) string {
+func getString(grid [][]rune, startR int, endR int, startC int, endC int) string {
 	rStep := 1
 	cStep := 1
 
@@ -74,7 +74,7 @@ func getString(grid *[][]rune, startR int, endR int, startC int, endC int) strin
 	c := startC
 	result := []rune{}
 	for !(r == endR && c == endC) {
-		result = append(result, (*grid)[r][c])
+		result = append(result, grid[r][c])
 		r += rStep
 		c += cStep
 	}
