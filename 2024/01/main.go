@@ -1,11 +1,11 @@
 package main
 
 import (
-	"fmt"
 	"bufio"
+	"fmt"
+	"os"
 	"strconv"
 	"strings"
-	"os"
 )
 
 func main() {
@@ -20,8 +20,8 @@ func parseInput() ([]int, []int) {
 	scanner := bufio.NewScanner(file)
 	defer file.Close()
 
-	left := make([]int, 1000)
-	right := make([]int, 1000)
+	left := []int{}
+	right := []int{}
 	for scanner.Scan() {
 		vals := strings.Fields(scanner.Text())
 		lval, _ := strconv.Atoi(vals[0])
